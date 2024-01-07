@@ -1,0 +1,14 @@
+package part1
+
+import (
+	"testing"
+)
+
+func TestRun(t *testing.T) {
+	result := Run("../test.txt")
+	expected := true
+
+	if result != expected {
+		t.Errorf("Run(\"../test.txt\") returned %t, expected %t", result, expected)
+	}
+}

@@ -1,0 +1,36 @@
+package main
+
+import (
+	"log"
+	"os"
+	"path/filepath"
+	"runtime"
+	{{range $_, $package := .Packages}}
+	"{{$package}}"{{end}}
+)
+
+func getPath(day string) string {
+	path := os.Args[2]
+	if path == "input" {
+		if _, filename, _, ok := runtime.Caller(0); ok {
+			path = filepath.Join(filepath.Dir(filename), day, "input.txt")
+		}
+	}
+	if path == "test" {
+		if _, filename, _, ok := runtime.Caller(0); ok {
+			path = filepath.Join(filepath.Dir(filename), day, "test.txt")
+		}
+	}
+	return path
+}
+
+func main() {
+	switch os.Args[1] { {{range $_, $day := .Days}}
+	case "day{{$day}}", "{{$day}}":
+		path := getPath("day{{$day}}")
+		day{{$day}}.Run(path){{end}}
+	default:
+		args := os.Args[:3]
+		log.Panicln("Bad input, please check your args values:", args)
+	}
+}

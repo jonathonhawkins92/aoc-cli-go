@@ -1,0 +1,39 @@
+package part1
+
+import (
+	"bufio"
+	"log"
+	"os"
+)
+
+func Run(path string) bool {
+	// Open the file
+	file, err := os.Open(path)
+	if err != nil {
+		log.Panicln("Error opening file:", err)
+	}
+
+	// Keep it clean
+	defer file.Close()
+
+	// Create a scanner to read the file line by line
+	scanner := bufio.NewScanner(file)
+
+	// Maybe use the first line only?
+	if scanner.Scan() {
+		line := scanner.Text()
+		log.Println(line)
+	}
+
+	// Maybe use all the lines!
+	for scanner.Scan() {
+		line := scanner.Text()
+		log.Println(line)
+	}
+
+	return true
+}
+
+func main() {
+	Run(os.Args[1])
+}

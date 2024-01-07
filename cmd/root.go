@@ -8,15 +8,13 @@ import (
 	"os"
 
 	"github.com/charmbracelet/lipgloss"
-	"github.com/jonathonhawkins92/aoc-cli-go/cmd/day"
-	"github.com/jonathonhawkins92/aoc-cli-go/cmd/list"
+	"github.com/jonathonhawkins92/aoc-cli-go/cmd/generate"
+	"github.com/jonathonhawkins92/aoc-cli-go/cmd/run"
 	"github.com/spf13/cobra"
 )
 
 // https://patorjk.com/software/taag/#p=testall&f=Isometric3&t=AoCGo
 const logo = `
-
-
 
       ___           ___           ___           ___           ___     
      /  /\         /  /\         /  /\         /  /\         /  /\    
@@ -30,7 +28,6 @@ const logo = `
     \  \:\        \  \::/       \  \::/       \  \::/       \  \::/   
      \__\/         \__\/         \__\/         \__\/         \__\/    
 
-
 `
 
 var (
@@ -42,13 +39,10 @@ func init() {
 }
 
 var rootCmd = &cobra.Command{
-	Use:   "AOCGo",
-	Short: "Advent of Code Go Lang CLI",
-	Long:  `An Advent of Code Command Line Interface written in Go Lang`,
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("hi")
-		day.Main()
-	},
+	Version: "v0.0.1",
+	Use:     "AoCGo",
+	Short:   "Advent of Code Go Lang CLI",
+	Long:    `An Advent of Code Command Line Interface written in Go Lang`,
 }
 
 func Execute() {
@@ -59,7 +53,6 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.AddCommand(list.ListCmd)
-	rootCmd.AddCommand(day.DayCmd)
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.AddCommand(generate.GenereateCmd)
+	rootCmd.AddCommand(run.RunCmd)
 }

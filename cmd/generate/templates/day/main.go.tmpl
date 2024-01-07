@@ -1,0 +1,15 @@
+package day{{.Day}}
+
+import (
+	"{{.Repository}}/{{.PackageName}}/day{{.Day}}/part1"
+	"{{.Repository}}/{{.PackageName}}/day{{.Day}}/part2"
+)
+
+func Run(input_path string, part string) {
+	switch part {
+	case "part1":
+		part1.Run(input_path)
+	case "part2":
+		part2.Run(input_path)
+	}
+}
