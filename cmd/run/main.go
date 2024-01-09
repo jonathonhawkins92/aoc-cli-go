@@ -7,7 +7,7 @@ import (
 	"log"
 	"strconv"
 
-	runDay "github.com/jonathonhawkins92/aoc-cli-go/cmd/run/day"
+	runDay "github.com/jonathonhawkins92/aoc-cli-go/components/day"
 	"github.com/spf13/cobra"
 )
 

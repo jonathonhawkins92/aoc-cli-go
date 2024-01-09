@@ -13,6 +13,7 @@ import (
 	"text/template"
 
 	"github.com/jonathonhawkins92/aoc-cli-go/cmd/generate/dir"
+	"github.com/jonathonhawkins92/aoc-cli-go/components/dir"
 	"github.com/spf13/cobra"
 )
 
